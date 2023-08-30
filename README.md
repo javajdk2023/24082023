@@ -1,5 +1,9 @@
 # Revisão
 
+# libs
+https://drive.google.com/drive/folders/17sDkLdGFa84yiTKiebsIZ7aLu93RTyaE?usp=drive_link
+
+
 ## Atividade 1
 
 ### Siga os passos:
