@@ -1,7 +1,8 @@
 # Revisão
 
-# libs
-https://drive.google.com/drive/folders/17sDkLdGFa84yiTKiebsIZ7aLu93RTyaE?usp=drive_link
+# Tutorial Instalar e Configurar Ferramentas (Postgres e DBEaver)
+
+https://forms.gle/TfbvtFGs9NDzcDy49
 
 
 ## Atividade 1
