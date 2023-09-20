@@ -4,7 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.Properties;
+
+import br.com.fuctura.entidade.Aluno;
+import br.com.fuctura.repositorio.AlunoRepositorio;
 
 public class Aplicacao {
 
@@ -21,39 +25,34 @@ public class Aplicacao {
 
 			var conexao = DriverManager.getConnection(url, username, password);
 			
-			//preparar
-			var comandoSQLINSERT = "INSERT INTO aluno VALUES (?, ?, ?, ?, ?)";
-			var ps = conexao.prepareStatement(comandoSQLINSERT);
-
-			var codigoAluno = 4;
-			var nomeAluno = "joao";
-			var idadeAluno = 20;
-			var emailAluno = "j@gmail";
-			var pesoAluno = 60;
+			AlunoRepositorio repo = new AlunoRepositorio();
 			
-			//atribuir valores
-			ps.setInt(1, codigoAluno);
-			ps.setString(2, nomeAluno);
-			ps.setInt(3, idadeAluno);
-			ps.setString(4, emailAluno);
-			ps.setDouble(5, pesoAluno);
+			Aluno a1 = new Aluno();
+			a1.setCodigo(93);
+			a1.setNome("DS87");
+			a1.setEmail("s87@gmail");
+			a1.setPeso(100.0);
+			a1.setIdade(39);
 			
-			//executar
-			ps.execute();
+			repo.inserir(conexao, a1);	
 			
-			System.out.println("INSERT INTO aluno EXECUTADO COM SUCESSO!");
-				
+			Aluno a2 = new Aluno();
+			a2.setCodigo(1);
 			
-			var comandoSQLDELETE = "DELETE FROM aluno WHERE codigo = ?";
-			
-			ps = conexao.prepareStatement(comandoSQLDELETE);
-		
-			ps.setInt(1, codigoAluno);
-			
-			ps.execute();
-			
-			
+			repo.excluir(conexao, a2);
 			System.out.println("DELETE FROM aluno EXECUTADO COM SUCESSO!");
+						
+			
+			var resuldadoConsulta = repo.consultar(conexao);
+			
+			
+			for (Aluno aluno : resuldadoConsulta) {
+				System.out.println("Idade: " + aluno.getIdade());
+			}
+			
+			//CRUD
+			//READ - executeQuery 
+			//CREATE,UPDATE e DELETE - execute
 			
 		} catch (IOException io) {
 			io.printStackTrace();
