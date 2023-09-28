@@ -16,6 +16,21 @@
 			<!-- Configurações específicas do Hibernate -->
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit>
+	<!-- unidade de persistencia -->
+	<persistence-unit name="FUCTURA-MYSQL"> <!-- COPIAR E COLAR NA CLASSE JAVA -->
+		<properties>
+			<!-- Propriedades JDBC -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/estudo" /> <!-- ALTERE DE ACORDO COM A SUA CONFIGURACAO -->
+			<property name="javax.persistence.jdbc.user" value="root" /> <!-- ALTERE DE ACORDO COM A SUA CONFIGURACAO -->
+			<property name="javax.persistence.jdbc.password" value="123" /> <!-- ALTERE DE ACORDO COM A SUA CONFIGURACAO -->
+			<!-- Configurações específicas do Hibernate -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
