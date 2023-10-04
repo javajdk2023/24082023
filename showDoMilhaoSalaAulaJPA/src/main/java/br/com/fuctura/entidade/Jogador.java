@@ -3,14 +3,17 @@ package br.com.fuctura.entidade;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_jogador", schema = "public")
 public class Jogador {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "jogador-seq")
+	@SequenceGenerator(name = "jogador-seq", allocationSize = 1)
 	private int codigo;
 
 	@Column(name = "aluno_nome", length = 20, nullable = false)

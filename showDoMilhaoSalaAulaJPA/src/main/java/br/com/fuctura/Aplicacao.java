@@ -7,7 +7,6 @@ import br.com.fuctura.entidade.Alternativa;
 import br.com.fuctura.entidade.Categoria;
 import br.com.fuctura.entidade.Partida;
 import br.com.fuctura.entidade.Questao;
-import br.com.fuctura.repositorio.PartidaRepositorio;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -20,10 +19,6 @@ public class Aplicacao {
 
 		EntityManager em = fabrica.createEntityManager();
 
-		// vou buscar do repositorio
-		PartidaRepositorio repo = new PartidaRepositorio();
-
-		
 		
 		Alternativa a1 = new Alternativa();
 		a1.setDescrica("Não orientado");
@@ -59,18 +54,13 @@ public class Aplicacao {
 		
 		var consulta = em.find(Questao.class, 1);
 		
-		System.out.println(consulta.getEnunciado());
-		
 		
 		System.out.println(consulta.getEnunciado());
 		System.out.println(consulta.getCategoria().getNome());
-		/*
+		
 		for(Alternativa a : consulta.getAltenativas()) {
 			System.out.println("Descricao: " + a.getDescrica());
 		}
-		*/
-		
-		
 		
 		fabrica.close();
 		em.close();

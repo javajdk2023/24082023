@@ -26,7 +26,6 @@ public class PartidaRepositorio {
 	}
 	
 	public List<Partida> findAll(EntityManager em) {
-		// findAll => select * from tb_jogador tj;
 		String findAllJPQL = "SELECT p FROM Partida p";
 		TypedQuery<Partida> consultarPartidas = em.createQuery(findAllJPQL, Partida.class);
 
@@ -35,6 +34,15 @@ public class PartidaRepositorio {
 		return resultado;
 	}
 
+	public List<Partida> findAllXML(EntityManager em) {
+		// findAll => select * from tb_jogador tj;
+		TypedQuery<Partida> consultarPartidas = em.createNamedQuery("Alternativa.findAllXML", Partida.class);
+
+		List<Partida> resultado = consultarPartidas.getResultList();
+
+		return resultado;
+	}
+	
 	public List<Partida> findByDuracao(EntityManager em, int duracao) {
 		// findByDuracao => select * from tb_partida where duracao = ?;
 		 String findByDuracaoJPQL = "SELECT p FROM Partida p where p.duracao = :duracao";
