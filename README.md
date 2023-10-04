@@ -1,10 +1,32 @@
-# 24082023
-## JDBC
+# Aula 8
+## Externalizando Consulta
 
-* https://docs.oracle.com/en/java/javase/17/docs/api/java.sql/java/sql/package-summary.html
+### Criar ```orm.xml``` arquivo na pasta META-INF:
 
-* https://download.oracle.com/otn-pub/jcp/jdbc-4_3-mrel3-spec/jdbc4.3-fr-spec.pdf?AuthParam=1694546163_72ad0c8226245091b567386b212bc7f4
+![image](https://github.com/javajdk2023/j224082023/assets/130251409/ca425d35-67a8-4d77-9c85-23771901ee78)
 
-## Maven
+### Conteúdo do Arquivo
 
-* https://mvnrepository.com/artifact/org.postgresql/postgresql/42.6.0
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.0" xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
+        http://java.sun.com/xml/ns/persistence/orm_2_0.xsd ">
+
+    <!--find all books ordered by pages descending-->
+    <named-query name="Alternativa.findAllXML">
+        <query>SELECT a FROM Alternativa a</query>
+    </named-query>
+
+    <!--find books by title-->
+    <named-query name="Questao.findAllXML">
+        <query>SELECT q FROM Questao q</query>
+    </named-query>
+
+</entity-mappings>
+````
+
+## Ciclo de Vida da Entidade
+
+![image](https://github.com/javajdk2023/j224082023/assets/130251409/e19ea87d-105d-4e55-9084-09f7235fe9fc)
